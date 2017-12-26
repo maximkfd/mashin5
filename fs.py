@@ -3,7 +3,6 @@ from matplotlib_venn import venn3
 
 import svmy
 from chi import chi2
-from fs_algorithms import info_gain_correlation
 from ig import *
 from spierman import spearman
 
@@ -43,12 +42,9 @@ def read_data(filename='arcene_train'):
 
 
 def get_ig_indices(features, labels, k=10):
-    keys = []
-    gain = info_gain_correlation(features, labels, k)
-    for k, v in gain:
-        keys.append(k)
-
-    return keys
+    gain = information_gain(features, labels)
+    ans = np.array(gain[0]).argsort()[-k:][::-1]
+    return ans
 
 
 def get_chi_indices(x, y, k=20):

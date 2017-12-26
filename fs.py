@@ -73,18 +73,18 @@ if __name__ == '__main__':
     svmy.check_svm(features_train, labels_train, features_test, labels_test, ig)
     spir = get_spierman_indices(features_train, labels_train, spir_i)
     svmy.check_svm(features_train, labels_train, features_test, labels_test, spir)
-    # s = (
-    #     len(chi),  # Pearson
-    #     len(ig),  # Spearman
-    #     len(np.intersect1d(chi, ig)),  # Pearson+IG
-    #     len(spir),  # IG
-    #     len(np.intersect1d(chi, spir)),  # Pearson+Spearman
-    #     len(np.intersect1d(spir, ig)),  # Spearman+IG
-    #     len(np.intersect1d(np.intersect1d(chi, spir), ig)),  # Pearson+Spearman+IG
-    # )
-    #
-    # v = venn3(subsets=s, set_labels=('Pearson', 'Spearman', 'IG'))
-    # plt.show()
+    s = (
+        len(chi),  # Pearson
+        len(ig),  # Spearman
+        len(np.intersect1d(chi, ig)),  # Pearson+IG
+        len(spir),  # IG
+        len(np.intersect1d(chi, spir)),  # Pearson+Spearman
+        len(np.intersect1d(spir, ig)),  # Spearman+IG
+        len(np.intersect1d(np.intersect1d(chi, spir), ig)),  # Pearson+Spearman+IG
+    )
+
+    v = venn3(subsets=s, set_labels=('Pearson', 'Spearman', 'IG'))
+    plt.show()
 
 
 
